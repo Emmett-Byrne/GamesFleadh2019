@@ -39,6 +39,10 @@ void Game::processEvents()
 		{
 			m_window.close();
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			m_exitGame = true;
+		}
 	}
 }
 
