@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <Thor/Math.hpp>
 
 class Game
 {
@@ -20,5 +21,6 @@ private:
 	sf::RenderWindow m_window; // main SFML window
 
 	bool m_exitGame; // control exiting game
+
 };
 
