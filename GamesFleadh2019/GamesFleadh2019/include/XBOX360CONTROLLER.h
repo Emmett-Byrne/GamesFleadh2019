@@ -1,14 +1,3 @@
-/// <summary>
-/// @authors: Emmett Byrne - C00220950
-///			  Przemek Tomczyk - C00218004
-///			  Patryk Wysocki - C00213855
-///			  Savannah Bolger - C00215747
-///			  David Scott - C00208031
-/// @date started: 5/03/2018
-/// @date finished: 23/03/2018
-/// 
-/// </summary>
-
 // @author Przemek Tomczyk - 'I made dis'
 #ifndef XBOX360CONTROLLER
 #define XBOX360CONTROLLER
@@ -65,17 +54,9 @@ public:
 
 	Xbox360Controller();
 	~Xbox360Controller();
-	void Xbox360Controller::update();
+	void update();
 	bool isConnected();
 	bool connect();
 };
-
-
-
-
-
-
-
-
 
 #endif // !XBOX360CONTROLLER

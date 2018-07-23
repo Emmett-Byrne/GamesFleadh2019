@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <Thor/Math.hpp>
+#include "ResourceManager.h"
+#include "Player.h"
 
 class Game
 {
@@ -21,6 +23,10 @@ private:
 	sf::RenderWindow m_window; // main SFML window
 
 	bool m_exitGame; // control exiting game
+
+	ResourceManager m_resourceMng; // resource manager
+
+	Player m_player;
 
 };
 

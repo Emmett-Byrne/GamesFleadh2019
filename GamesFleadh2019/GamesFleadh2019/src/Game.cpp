@@ -48,6 +48,7 @@ void Game::processEvents()
 
 void Game::update(sf::Time t_deltaTime)
 {
+	m_player.update(t_deltaTime);
 	if (m_exitGame)
 	{
 		m_window.close();
@@ -57,6 +58,6 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::Black);
-
+	m_player.render(m_window);
 	m_window.display();
 }
