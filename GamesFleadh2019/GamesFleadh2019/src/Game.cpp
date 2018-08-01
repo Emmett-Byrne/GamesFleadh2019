@@ -1,10 +1,15 @@
 #include "Game.h"
 #include <iostream>
 
+#include "Utility.h"
+
 Game::Game() :
 	m_window{ sf::VideoMode{ 1920, 1080, 32 }, "TBD", sf::Style::Fullscreen },
 	m_exitGame{ false }
 {
+	m_plane.setFillColor(sf::Color(0, 51, 0, 255));
+	m_plane.setSize(PLANE_SIZE);
+	m_plane.setPosition(PLANE_POS);
 }
 
 Game::~Game()
@@ -35,6 +40,7 @@ void Game::processEvents()
 	sf::Event event;
 	while (m_window.pollEvent(event))
 	{
+		m_player.processEvents(event, m_controller);
 		if (sf::Event::Closed == event.type) // window message
 		{
 			m_window.close();
@@ -49,6 +55,7 @@ void Game::processEvents()
 void Game::update(sf::Time t_deltaTime)
 {
 	m_player.update(t_deltaTime);
+
 	if (m_exitGame)
 	{
 		m_window.close();
@@ -58,6 +65,9 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::Black);
+
+	m_window.draw(m_plane);
 	m_player.render(m_window);
+
 	m_window.display();
 }

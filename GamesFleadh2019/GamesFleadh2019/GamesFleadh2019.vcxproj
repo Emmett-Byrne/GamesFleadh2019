@@ -22,6 +22,7 @@
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\ResourceManager.h" />
+    <ClInclude Include="include\Utility.h" />
     <ClInclude Include="include\XBOX360CONTROLLER.h" />
   </ItemGroup>
   <ItemGroup>

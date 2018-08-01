@@ -1,7 +1,10 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+
 #include <Thor/Math.hpp>
+#include <Thor/Vectors.hpp>
+
 #include "ResourceManager.h"
 #include "Player.h"
 
@@ -15,11 +18,16 @@ public:Game();
 	   void run();
 
 private:
+	// const/static
+	
 
+	// functions
 	void processEvents();
 	void update(sf::Time t_deltaTime);
 	void render();
 
+	// variables
+	Xbox360Controller m_controller;
 	sf::RenderWindow m_window; // main SFML window
 
 	bool m_exitGame; // control exiting game
@@ -27,6 +35,8 @@ private:
 	ResourceManager m_resourceMng; // resource manager
 
 	Player m_player;
+
+	sf::RectangleShape m_plane;
 
 };
 
