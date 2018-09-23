@@ -7,13 +7,18 @@
 /// working on double jump
 /// </summary>
 
-Player::Player():
+Player::Player(ResourceManager & t_resources/*, sf::RenderWindow & t_window*/) :
+	m_resourceMng(t_resources),
+	//m_window(t_window),
 	SIZE(30),
 	SPEED(10),
 	MAX_JUMPS(4),
 	MAX_SPEED(SPEED * PIXELS_TO_METERS),
 	JUMP_VELO(-12 * PIXELS_TO_METERS),
-	STARTING_POS(1920/2.0, PLANE_POS.y)
+	STARTING_POS(1920 / 2.0, PLANE_POS.y),
+	MAX_FRAMES(29),
+	TIME_PER_FRAME(160.0f),
+	m_animStates(ANIM_STATE::IDLE)
 {
 	setupPlayer();
 
@@ -78,19 +83,26 @@ void Player::update(sf::Time t_deltaTime)
 {
 	//handleKeyPress();
 	handleMovement(t_deltaTime.asSeconds());
-	
+
 	m_speedTxt.setString("Speed: " + std::to_string(static_cast<int>(m_velocity.x)));
 
+	//m_player.setTextureRect(sf::IntRect(0 + 64 * m_frameNum, 0, 64, 128));
+
+	handleAnimation(t_deltaTime.asMilliseconds());
+	m_player.setPosition(m_body.getPosition().x, m_body.getPosition().y + m_body.getSize().y - m_player.getTextureRect().height);
 }
 
 void Player::render(sf::RenderWindow & t_window)
 {
 	t_window.draw(m_body);
 	t_window.draw(m_speedTxt);
+	t_window.draw(m_player);
 }
 
 void Player::setupPlayer()
 {
+	m_player.setTextureRect(sf::IntRect(0, 0, 64, 128));
+
 	m_body.setSize(sf::Vector2f(SIZE, SIZE));
 	//m_body.setOrigin(sf::Vector2f(SIZE / 2.0, SIZE / 2.0));
 	m_body.setPosition(STARTING_POS);
@@ -105,6 +117,8 @@ void Player::setupPlayer()
 
 	m_speedTxt.setString("Speed: ");
 	m_speedTxt.setPosition(sf::Vector2f(50.f, 50.f));
+
+	m_player.setTexture(m_resourceMng.getTexture(TextureID::PLAYER_SHEET));
 }
 
 void Player::handleKeyPress()
@@ -217,4 +231,42 @@ void Player::handleMovement(float t_time)
 	//}
 
 	m_body.setPosition(m_position);
+}
+
+void Player::handleAnimation(float t_time)
+{
+	switch (m_animStates)
+	{
+	case Player::ANIM_STATE::IDLE:
+		doIdleAnim(t_time);
+		break;
+	case Player::ANIM_STATE::RUN:
+		break;
+	default:
+		break;
+	}
+
+
+
+}
+
+void Player::doIdleAnim(float t_time)
+{
+	m_frameTime += t_time;
+
+	if (m_frameTime >= TIME_PER_FRAME)
+	{
+		m_player.setTextureRect(sf::IntRect(0 + 64 * m_frameNum, 0, 64, 128));
+		m_frameNum++;
+		m_frameTime = 0.0f;
+	}
+
+	if (m_frameNum > 7)
+	{
+		m_frameNum = 0;
+	}
+}
+
+void Player::doRunAnim()
+{
 }

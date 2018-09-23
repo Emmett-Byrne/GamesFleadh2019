@@ -20,7 +20,7 @@
 enum class TextureID
 {
 	//eg PLAYER_TEXTURE,
-	
+	PLAYER_SHEET
 };
 
 /// <summary>

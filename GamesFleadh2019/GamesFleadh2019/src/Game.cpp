@@ -5,7 +5,8 @@
 
 Game::Game() :
 	m_window{ sf::VideoMode{ 1920, 1080, 32 }, "TBD", sf::Style::Fullscreen },
-	m_exitGame{ false }
+	m_exitGame{ false },
+	m_player(m_resourceMng/*, m_window*/)
 {
 	m_plane.setFillColor(sf::Color(0, 51, 0, 255));
 	m_plane.setSize(PLANE_SIZE);

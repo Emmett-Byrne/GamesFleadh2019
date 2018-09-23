@@ -18,6 +18,8 @@ public:Game();
 	   void run();
 
 private:
+	ResourceManager m_resourceMng; // resource manager
+
 	// const/static
 	
 
@@ -32,7 +34,6 @@ private:
 
 	bool m_exitGame; // control exiting game
 
-	ResourceManager m_resourceMng; // resource manager
 
 	Player m_player;
 

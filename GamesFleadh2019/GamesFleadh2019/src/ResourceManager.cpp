@@ -37,6 +37,7 @@ void ResourceManager::loadTextures()
 	{
 		//eg below
 		//m_textureHolder.acquire(TextureID::PLAYER_TEXTURE, thor::Resources::fromFile<sf::Texture>("ASSETS\\IMAGES\\Player.png"));
+		m_textureHolder.acquire(TextureID::PLAYER_SHEET, thor::Resources::fromFile<sf::Texture>("ASSETS\\IMAGES\\player_sheet.png"));
 	}
 	catch (thor::ResourceLoadingException& e)
 	{
