@@ -8,6 +8,8 @@ Game::Game() :
 	m_exitGame{ false },
 	m_player(m_resourceMng/*, m_window*/)
 {
+	m_window.setVerticalSyncEnabled(true);
+
 	m_plane.setFillColor(sf::Color(0, 51, 0, 255));
 	m_plane.setSize(PLANE_SIZE);
 	m_plane.setPosition(PLANE_POS);

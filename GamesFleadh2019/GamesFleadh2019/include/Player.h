@@ -29,7 +29,7 @@ private:
 	void handleMovement(float t_time);
 	void handleAnimation(float t_time);
 	void doIdleAnim(float t_time);
-	void doRunAnim();
+	void doRunAnim(float t_time);
 
 	// consts
 	const int SIZE;

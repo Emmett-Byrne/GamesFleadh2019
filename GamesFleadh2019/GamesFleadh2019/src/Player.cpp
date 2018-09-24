@@ -37,9 +37,11 @@ void Player::processEvents(sf::Event & t_event, Xbox360Controller & t_controller
 		if (sf::Keyboard::A == t_event.key.code)
 		{
 			m_left = true;
+			m_player.setScale(1, 1);
 		}
 		if (sf::Keyboard::D == t_event.key.code)
 		{
+			m_player.setScale(-1, 1);
 			m_right = true;
 		}
 		if (sf::Keyboard::Space == t_event.key.code && !m_jump)
@@ -89,7 +91,6 @@ void Player::update(sf::Time t_deltaTime)
 	//m_player.setTextureRect(sf::IntRect(0 + 64 * m_frameNum, 0, 64, 128));
 
 	handleAnimation(t_deltaTime.asMilliseconds());
-	m_player.setPosition(m_body.getPosition().x, m_body.getPosition().y + m_body.getSize().y - m_player.getTextureRect().height);
 }
 
 void Player::render(sf::RenderWindow & t_window)
@@ -126,6 +127,7 @@ void Player::handleKeyPress()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		m_left = true;
+		m_player.setScale(-1, 1);
 	}
 	else
 	{
@@ -134,6 +136,7 @@ void Player::handleKeyPress()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		m_right = true;
+		m_player.setScale(1, 1);
 	}
 	else
 	{
@@ -155,6 +158,15 @@ void Player::handleKeyPress()
 
 void Player::handleMovement(float t_time)
 {
+	if (m_right || m_left)
+	{
+		m_animStates = ANIM_STATE::RUN;
+	}
+	else
+	{
+		m_animStates = ANIM_STATE::IDLE;
+	}
+
 	if (m_right)
 	{
 		if (m_velocity.x + SPEED < MAX_SPEED)
@@ -241,13 +253,14 @@ void Player::handleAnimation(float t_time)
 		doIdleAnim(t_time);
 		break;
 	case Player::ANIM_STATE::RUN:
+		doRunAnim(t_time);
 		break;
 	default:
 		break;
 	}
 
 
-
+	m_player.setPosition(m_body.getPosition().x + m_body.getSize().x / 2.0f - m_player.getScale().x * m_player.getTextureRect().width / 2.0f, m_body.getPosition().y + m_body.getSize().y - m_player.getTextureRect().height);
 }
 
 void Player::doIdleAnim(float t_time)
@@ -256,9 +269,12 @@ void Player::doIdleAnim(float t_time)
 
 	if (m_frameTime >= TIME_PER_FRAME)
 	{
+		int direction = m_player.getScale().x;
 		m_player.setTextureRect(sf::IntRect(0 + 64 * m_frameNum, 0, 64, 128));
 		m_frameNum++;
 		m_frameTime = 0.0f;
+
+		m_player.setScale(direction, 1);
 	}
 
 	if (m_frameNum > 7)
@@ -267,6 +283,22 @@ void Player::doIdleAnim(float t_time)
 	}
 }
 
-void Player::doRunAnim()
+void Player::doRunAnim(float t_time)
 {
+	m_frameTime += t_time;
+
+	if (m_frameTime >= TIME_PER_FRAME)
+	{
+		int direction = m_player.getScale().x;
+		m_player.setTextureRect(sf::IntRect(0 + 128 * m_frameNum, 128, 128, 128));
+		m_frameNum++;
+		m_frameTime = 0.0f;
+
+		m_player.setScale(direction, 1);
+	}
+
+	if (m_frameNum > 7)
+	{
+		m_frameNum = 0;
+	}
 }
