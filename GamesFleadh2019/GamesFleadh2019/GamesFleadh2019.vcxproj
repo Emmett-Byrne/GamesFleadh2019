@@ -19,9 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\cute_c2.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\ResourceManager.h" />
+    <ClInclude Include="include\tinyc2.h" />
+    <ClInclude Include="include\Tinyc2Debug.hpp" />
     <ClInclude Include="include\Utility.h" />
     <ClInclude Include="include\XBOX360CONTROLLER.h" />
   </ItemGroup>

@@ -1,11 +1,7 @@
 #include "Player.h"
 #include "Utility.h"
 #include <math.h>
-
-/// <summary>
-/// note to self:
-/// working on double jump
-/// </summary>
+#include "Tinyc2Debug.hpp"
 
 Player::Player(ResourceManager & t_resources/*, sf::RenderWindow & t_window*/) :
 	m_resourceMng(t_resources),
@@ -98,6 +94,8 @@ void Player::render(sf::RenderWindow & t_window)
 	t_window.draw(m_body);
 	t_window.draw(m_speedTxt);
 	t_window.draw(m_player);
+
+
 }
 
 void Player::setupPlayer()

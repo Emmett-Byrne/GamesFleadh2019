@@ -1,10 +1,3 @@
-/// <summary>
-/// simple game loop for SFML[2.4.2]
-/// 
-/// @author Emmett Byrne
-/// @date 25-11-17
-/// </summary>
-
 #ifdef _DEBUG 
 #pragma comment(lib,"sfml-graphics-d.lib") 
 #pragma comment(lib,"sfml-audio-d.lib") 
@@ -30,6 +23,8 @@
 #include "Game.h"
 #include <cstdlib>
 #include <ctime>
+
+
 
 /// <summary>
 /// main enrtry point

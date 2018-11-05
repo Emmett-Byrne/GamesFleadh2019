@@ -6,6 +6,9 @@
 #include "XBOX360CONTROLLER.h"
 #include "ResourceManager.h"
 
+#define TINYC2_IMPLEMENTATION
+#include "tinyc2.h"
+
 class Player
 {
 	enum class ANIM_STATE
@@ -23,6 +26,9 @@ public:
 	void render(sf::RenderWindow & t_window);
 
 private:
+	// tinyc2 collosion
+	c2AABB m_playerBox;
+
 	// functions
 	void setupPlayer();
 	void handleKeyPress();
