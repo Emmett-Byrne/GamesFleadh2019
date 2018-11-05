@@ -1,10 +1,3 @@
-/// <summary>
-/// simple game loop for SFML[2.4.2]
-/// 
-/// @author Emmett Byrne
-/// @date 25-11-17
-/// </summary>
-
 #ifdef _DEBUG 
 #pragma comment(lib,"sfml-graphics-d.lib") 
 #pragma comment(lib,"sfml-audio-d.lib") 
@@ -21,7 +14,9 @@
 #pragma comment(lib,"thor.lib") 
 #endif 
 
-/// <summary>
+#define TINYC2_IMPLEMENTATION
+
+/// /// <summary>
 /// if we decide to use yaml, we will need the line below
 /// MUST be before first include line
 /// </summary>
@@ -30,6 +25,8 @@
 #include "Game.h"
 #include <cstdlib>
 #include <ctime>
+
+
 
 /// <summary>
 /// main enrtry point

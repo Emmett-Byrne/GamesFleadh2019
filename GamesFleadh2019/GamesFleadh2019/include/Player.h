@@ -9,6 +9,8 @@
 #include "AnimatedSprite.h"
 #include <FSM.h>
 
+#include "tinyc2.h"
+
 class Player
 {
 public:
@@ -22,6 +24,8 @@ private:
 	Idle idle;
 	Run run;
 	Jump jump;
+	// tinyc2 collosion
+	c2AABB m_playerBox;
 
 	// functions
 	void setupPlayer();
