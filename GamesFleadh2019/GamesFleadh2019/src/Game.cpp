@@ -4,9 +4,9 @@
 #include "Utility.h"
 
 Game::Game() :
-	m_window{ sf::VideoMode{ 1920, 1080, 32 }, "TBD", sf::Style::Fullscreen },
+	m_window{ sf::VideoMode{ 1920, 1080, 32 }, "TBD"/*, sf::Style::Fullscreen*/},
 	m_exitGame{ false },
-	m_player(m_resourceMng/*, m_window*/)
+	m_player(m_resourceMng, m_input/*, m_window*/)
 {
 	m_window.setVerticalSyncEnabled(true);
 
@@ -41,9 +41,9 @@ void Game::run()
 void Game::processEvents()
 {
 	sf::Event event;
+	m_input.update();
 	while (m_window.pollEvent(event))
 	{
-		m_player.processEvents(event, m_controller);
 		if (sf::Event::Closed == event.type) // window message
 		{
 			m_window.close();
@@ -51,6 +51,38 @@ void Game::processEvents()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		{
 			m_exitGame = true;
+		}
+
+		if (sf::Event::KeyPressed == event.type) //user key press
+		{
+			if (sf::Keyboard::A == event.key.code)
+			{
+				m_input.m_current.A = true;
+			}
+			if (sf::Keyboard::D == event.key.code)
+			{
+				m_input.m_current.D = true;
+			}
+			if (sf::Keyboard::Space == event.key.code)
+			{
+				m_input.m_current.Space = true;
+			}
+		}
+
+		if (sf::Event::KeyReleased == event.type)
+		{
+			if (sf::Keyboard::A == event.key.code)
+			{
+				m_input.m_current.A = false;
+			}
+			if (sf::Keyboard::D == event.key.code)
+			{
+				m_input.m_current.D = false;
+			}
+			if (sf::Keyboard::Space == event.key.code)
+			{
+				m_input.m_current.Space = false;
+			}
 		}
 	}
 }

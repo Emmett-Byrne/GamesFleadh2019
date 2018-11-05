@@ -30,6 +30,7 @@ private:
 
 	// variables
 	Xbox360Controller m_controller;
+	Input m_input;
 	sf::RenderWindow m_window; // main SFML window
 
 	bool m_exitGame; // control exiting game
