@@ -21,31 +21,66 @@
   <ItemGroup>
     <ClInclude Include="FSM.h" />
     <ClInclude Include="include\AnimatedSprite.h" />
+    <ClInclude Include="include\button.h" />
+    <ClInclude Include="include\CheckButton.h" />
+    <ClInclude Include="include\Container.h" />
+    <ClInclude Include="include\CreditsScreen.h" />
+    <ClInclude Include="include\Frame.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\GameScreen.h" />
     <ClInclude Include="include\Input.h" />
+    <ClInclude Include="include\Label.h" />
+    <ClInclude Include="include\Layout.h" />
+    <ClInclude Include="include\LicenseScreen.h" />
+    <ClInclude Include="include\MainMenu.h" />
+    <ClInclude Include="include\OptionMenu.h" />
     <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\RadioButton.h" />
     <ClInclude Include="include\ResourceManager.h" />
+    <ClInclude Include="include\Slider.h" />
+    <ClInclude Include="include\SplashScreen.h" />
+    <ClInclude Include="include\States.h" />
+    <ClInclude Include="include\TextButton.h" />
     <ClInclude Include="include\tinyfsm.hpp" />
     <ClInclude Include="include\tinyc2.h" />
     <ClInclude Include="include\Tinyc2Debug.hpp" />
     <ClInclude Include="include\Utility.h" />
+    <ClInclude Include="include\VLayout.h" />
+    <ClInclude Include="include\Widget.h" />
     <ClInclude Include="include\XBOX360CONTROLLER.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FSM.cpp" />
     <ClCompile Include="src\AnimatedSprite.cpp" />
+    <ClCompile Include="src\button.cpp" />
+    <ClCompile Include="src\CheckButton.cpp" />
+    <ClCompile Include="src\Container.cpp" />
+    <ClCompile Include="src\CreditsScreen.cpp" />
+    <ClCompile Include="src\Frame.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GameScreen.cpp" />
     <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\Label.cpp" />
+    <ClCompile Include="src\Layout.cpp" />
+    <ClCompile Include="src\LicenseScreen.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\MainMenu.cpp" />
+    <ClCompile Include="src\OptionMenu.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\RadioButton.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
+    <ClCompile Include="src\Slider.cpp" />
+    <ClCompile Include="src\SplashScreen.cpp" />
+    <ClCompile Include="src\TextButton.cpp" />
+    <ClCompile Include="src\VLayout.cpp" />
+    <ClCompile Include="src\Widget.cpp" />
     <ClCompile Include="src\XBOX360CONTROLLER.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{A8A41FE3-EF42-43A2-B604-0685C7C795B0}</ProjectGuid>
     <RootNamespace>GamesFleadh2019</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
