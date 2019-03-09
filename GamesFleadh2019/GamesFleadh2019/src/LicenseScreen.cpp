@@ -1,4 +1,5 @@
 #include "LicenseScreen.h"
+#include "Utility.h"
 
 LicenseScreen::LicenseScreen(Menu & state) :
 	m_state(state)
@@ -11,10 +12,10 @@ LicenseScreen::LicenseScreen(Menu & state) :
 	}
 
 	m_license.setTexture(m_texture);
-	m_license.setScale(2.2f, 2.2f);
-	m_license.setPosition(600 - m_license.getGlobalBounds().width / 2.0, 0);
+	//m_license.setOrigin(m_license.getGlobalBounds().width / 2.0, 0);
+	m_license.setPosition(m_license.getGlobalBounds().width / 2.0, 0);
 	sf::Transform temp;
-	temp.translate(0, -1200);
+	temp.translate(0, -m_license.getGlobalBounds().height);
 	m_renderState.transform = temp;
 }
 
@@ -42,7 +43,7 @@ void LicenseScreen::update(sf::Time t_deltaTime)
 	}
 	if (m_transitionIn)
 	{
-		m_renderState.transform.translate(sf::Vector2f(0, scaler * 1200));
+		m_renderState.transform.translate(sf::Vector2f(0, scaler * m_license.getGlobalBounds().height));
 
 		if (m_transitionTime.asSeconds() < 0)
 		{
@@ -54,7 +55,7 @@ void LicenseScreen::update(sf::Time t_deltaTime)
 	}
 	if (m_transitionOut)
 	{
-		m_renderState.transform.translate(sf::Vector2f(0, scaler * -1200));
+		m_renderState.transform.translate(sf::Vector2f(0, scaler * -m_license.getGlobalBounds().height));
 		if (m_transitionTime.asSeconds() < 0)
 		{
 			m_transitionOut = false;
@@ -72,7 +73,7 @@ void LicenseScreen::render(sf::RenderWindow & t_window)
 void LicenseScreen::transitionIn()
 {
 	sf::Transform temp;
-	temp.translate(0, -1200);
+	temp.translate(0, -m_license.getGlobalBounds().height);
 	m_renderState.transform = temp;
 
 	m_transitionIn = true;
@@ -88,7 +89,7 @@ void LicenseScreen::transitionOut(Menu s)
 	m_nextState = s;
 }
 
-bool LicenseScreen::getChengeMenu()
+bool LicenseScreen::getChangeMenu()
 {
 	return m_changeMenu;
 }

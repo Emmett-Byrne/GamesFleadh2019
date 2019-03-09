@@ -38,7 +38,7 @@ void MainMenu::initGui()
 
 	//setting the strings that will be returned on a button input
 	m_play->setDown("options");
-	m_play->setA("playmenu");
+	m_play->setA("playmenu"); 
 
 	m_optionsButton->setUp("play");
 	m_optionsButton->setDown("credits");
@@ -104,7 +104,7 @@ void MainMenu::messageHandler(std::string s)
 	if (s == "playmenu")
 	{
 		//pass in a reference to the current manu state and change it to PlayMenu
-		transitionOut(Menu::StateGame);
+		transitionOut(Menu::StateGameplay);
 	}
 
 	if (s == "optionsmenu")
@@ -199,7 +199,7 @@ void MainMenu::render(sf::RenderWindow & window)
 void MainMenu::transitionIn()
 {
 	m_selected->deselect();
-	m_selected = m_play;
+	//m_selected = m_play;
 	m_selected->select();
 
 	sf::Transform temp;
@@ -219,7 +219,7 @@ void MainMenu::transitionOut(Menu s)
 	m_nextState = s;
 }
 
-bool MainMenu::getChengeMenu()
+bool MainMenu::getChangeMenu()
 {
 	return m_changeMenu;
 }

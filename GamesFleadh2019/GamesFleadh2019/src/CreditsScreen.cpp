@@ -129,7 +129,7 @@ void CreditsScreen::transitionOut(Menu t_string)
 	m_nextState = t_string;
 }
 
-bool CreditsScreen::getChengeMenu()
+bool CreditsScreen::getChangeMenu()
 {
 	return m_changeMenu;
 }

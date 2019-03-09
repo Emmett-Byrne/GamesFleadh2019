@@ -6,7 +6,8 @@ enum Menu
 	StateLicense,
 	StateMainMenu,
 	StateOptions,
-	StateGame,
+	StateGameplay,
+	StateEnd,
 	StateCredits,
 	StateQuit
 };

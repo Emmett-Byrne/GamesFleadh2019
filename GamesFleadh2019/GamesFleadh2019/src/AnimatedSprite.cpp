@@ -5,9 +5,9 @@ AnimatedSprite::AnimatedSprite()
 	m_current_frame = 0;
 }
 
-AnimatedSprite::AnimatedSprite(const sf::Texture& t) : Sprite(t), m_current_frame(0), m_time(seconds(0.5f)) {}
+AnimatedSprite::AnimatedSprite(const sf::Texture& t) : Sprite(t), m_current_frame(0), m_time(seconds(0.5f)), m_offset(0, 0), m_looping(true) {}
 
-AnimatedSprite::AnimatedSprite(const sf::Texture& t, const sf::IntRect& rect) : Sprite(t), m_current_frame(0), m_time(seconds(0.5f)) {
+AnimatedSprite::AnimatedSprite(const sf::Texture& t, const sf::IntRect& rect) : Sprite(t), m_current_frame(0), m_time(seconds(0.5f)), m_offset(0, 0), m_looping(true) {
 	m_frames.push_back(rect);
 }
 
@@ -26,6 +26,11 @@ void AnimatedSprite::setTime(Time t)
 	m_time = t;
 }
 
+void AnimatedSprite::reset()
+{
+	m_current_frame = 0;
+}
+
 const vector<IntRect>& AnimatedSprite::getFrames() {
 	return m_frames;
 }
@@ -42,6 +47,21 @@ const int AnimatedSprite::getCurrentFrame() {
 	return m_current_frame;
 }
 
+void AnimatedSprite::setOffset(sf::Vector2f v)
+{
+	m_offset = v;
+}
+
+void AnimatedSprite::setLooping(bool looping)
+{
+	m_looping = looping;
+}
+
+const sf::Vector2f AnimatedSprite::getOffset()
+{
+	return m_offset;
+}
+
 void AnimatedSprite::update() {
 	if (m_clock.getElapsedTime() > m_time) {
 		if (m_frames.size() > m_current_frame + 1)
@@ -49,7 +69,10 @@ void AnimatedSprite::update() {
 			m_current_frame++;
 		}
 		else {
-			m_current_frame = 0;
+			if (m_looping)
+			{
+				m_current_frame = 0;
+			}
 		}
 		m_clock.restart();
 	}

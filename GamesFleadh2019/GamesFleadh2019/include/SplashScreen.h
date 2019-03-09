@@ -31,7 +31,7 @@ public:
 	void render(sf::RenderWindow & t_window);
 	void transitionIn();
 	void transitionOut(Menu t_string);
-	bool getChengeMenu();
+	bool getChangeMenu();
 	void resetChangeMenu();
 
 private:

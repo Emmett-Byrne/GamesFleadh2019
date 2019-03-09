@@ -23,7 +23,7 @@ public:
 	void messageHandler(std::string t_string); //Handles messages recieved from widgets
 	void transitionIn(); //Sets up for transitioning out of the menu
 	void transitionOut(Menu t_string); //Sets up for transitioning into the menu
-	bool getChengeMenu(); //Returns wheather the menu has finished transitioning out
+	bool getChangeMenu(); //Returns wheather the menu has finished transitioning out
 	void resetChangeMenu(); //resets the bool to false
 
 private:

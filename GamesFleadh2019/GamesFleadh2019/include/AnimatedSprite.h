@@ -19,10 +19,14 @@ public:
 	const Clock& getClock();
 	const Time& getTime();
 	void setTime(Time t);
+	void reset();
 	const vector<IntRect>& getFrames();
 	const IntRect& getFrame(int);
 	void addFrame(IntRect&);
 	const int getCurrentFrame();
+	void setOffset(sf::Vector2f v);
+	void setLooping(bool looping);
+	const sf::Vector2f getOffset();
 	void update();
 
 private:
@@ -30,6 +34,8 @@ private:
 	Time m_time;
 	vector<IntRect> m_frames;
 	int m_current_frame;
+	sf::Vector2f m_offset;
+	bool m_looping;
 };
 
 #endif // !ANIMATED_SPRITE_H

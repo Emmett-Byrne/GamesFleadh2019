@@ -159,22 +159,34 @@ void OptionMenu::messageHandler(std::string s)
 
 	if (s == "increasemusic")
 	{
-		m_options.musicVol += 5;
+		if (m_options.musicVol < 100)
+		{
+			m_options.musicVol += 5;
+		}
 	}
 	
 	if (s == "decreasemusic")
 	{
-		m_options.musicVol -= 5;
+		if (m_options.musicVol > 0)
+		{
+			m_options.musicVol -= 5;
+		}
 	}
 
 	if (s == "increasesound")
 	{
-		m_options.soundVol += 5;
+		if (m_options.soundVol < 100)
+		{
+			m_options.soundVol += 5;
+		}
 	}
 
 	if (s == "decreasesound")
 	{
-		m_options.soundVol -= 5;
+		if (m_options.soundVol > 0)
+		{
+			m_options.soundVol -= 5;
+		}
 	}
 
 	if (s == "toggle")

@@ -12,10 +12,8 @@ SplashScreen::SplashScreen(Menu & state) :
 
 	m_splash.setTexture(m_texture);
 
-	m_splash.setScale(1.1f, 1.4f);
-
 	sf::Transform temp;
-	temp.translate(0, -1200);
+	temp.translate(0, -1080);
 	m_renderState.transform = temp;
 
 }
@@ -47,7 +45,7 @@ void SplashScreen::update(sf::Time t_deltaTime)
 	}
 	if (m_transitionIn)
 	{
-		m_renderState.transform.translate(sf::Vector2f(0, scaler * 1200));
+		m_renderState.transform.translate(sf::Vector2f(0, scaler * 1080));
 
 		if (m_transitionTime.asSeconds() < 0)
 		{
@@ -58,7 +56,7 @@ void SplashScreen::update(sf::Time t_deltaTime)
 	}
 	if (m_transitionOut)
 	{
-		m_renderState.transform.translate(sf::Vector2f(0, scaler * -1200));
+		m_renderState.transform.translate(sf::Vector2f(0, scaler * -1080));
 		if (m_transitionTime.asSeconds() < 0)
 		{
 			m_transitionOut = false;
@@ -76,7 +74,7 @@ void SplashScreen::render(sf::RenderWindow & t_window)
 void SplashScreen::transitionIn()
 {
 	sf::Transform temp;
-	temp.translate(0, -1200);
+	temp.translate(0, -1080);
 	m_renderState.transform = temp;
 
 	m_transitionIn = true;
@@ -92,7 +90,7 @@ void SplashScreen::transitionOut(Menu s)
 	m_nextState = s;
 }
 
-bool SplashScreen::getChengeMenu()
+bool SplashScreen::getChangeMenu()
 {
 	return m_changeMenu;
 }

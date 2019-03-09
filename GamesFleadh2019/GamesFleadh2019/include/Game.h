@@ -21,6 +21,8 @@
 #include "LicenseScreen.h"
 #include "GameScreen.h"
 #include "CreditsScreen.h"
+#include "EndScreen.h"
+#include "ParticlePool.h"
 
 
 class Game
@@ -45,6 +47,7 @@ private:
 	void update(sf::Time t_deltaTime);
 	void render();
 	void processScreenEvents();
+	void handleKeyPresses(sf::Event t_event);
 
 	// variables
 	sf::RenderStates state;
@@ -54,7 +57,7 @@ private:
 	bool m_exitGame; // control exiting game
 
 	Menu m_currentMenu;
-	bool m_changingMenu;
+	bool m_changingMenu = false;
 
 	SplashScreen m_splashScreen;
 	LicenseScreen m_licenseScreen;
@@ -62,8 +65,11 @@ private:
 	OptionMenu m_optionMenu;
 	CreditsScreen m_creditsScreen;
 	GameScreen m_gameScreen;
+	EndScreen m_endScreen;
 
 	Options m_options;
+
+	sf::Music m_background;
 
 };
 
